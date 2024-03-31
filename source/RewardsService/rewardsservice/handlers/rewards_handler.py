@@ -13,3 +13,9 @@ class RewardsHandler(tornado.web.RequestHandler):
         db = client["Rewards"]
         rewards = list(db.rewards.find({}, {"_id": 0}))
         self.write(json.dumps(rewards))
+
+class TestHandler(tornado.web.RequestHandler):
+
+    @coroutine
+    def get(self):
+        self.render('base_page.html')

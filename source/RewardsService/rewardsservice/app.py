@@ -17,22 +17,27 @@ class App(tornado.web.Application):
 
         tornado.web.Application.__init__(self, urls, **settings)
 
+
 app = App(url_patterns)
 
 
-def main():
-    logger = logging.getLogger()
-    tornado.options.parse_command_line()
-    http_server = tornado.httpserver.HTTPServer(app, xheaders=True)
-    http_server.listen(options.port)
+# def main():
+#     logger = logging.getLogger()
+#     tornado.options.parse_command_line()
+#     http_server = tornado.httpserver.HTTPServer(app, xheaders=True)
+#     http_server.listen(options.port)
 
-    logger.info('Tornado server started on port {}'.format(options.port))
+#     logger.info('Tornado server started on port {}'.format(options.port))
 
-    try:
-        tornado.ioloop.IOLoop.instance().start()
-    except KeyboardInterrupt:
-        logger.info("\nStopping server on port {}".format(options.port))
+#     try:
+#         tornado.ioloop.IOLoop.instance().start()
+#     except KeyboardInterrupt:
+#         logger.info("\nStopping server on port {}".format(options.port))
 
 
 if __name__ == "__main__":
-    main()
+    app = tornado.httpserver.HTTPServer(app, xheaders=True)
+    port = 7050
+    app.listen(port)
+    print('Hello Its running')
+    tornado.ioloop.IOLoop.current().start()
