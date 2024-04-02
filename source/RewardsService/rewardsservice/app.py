@@ -10,7 +10,6 @@ from tornado.options import options
 from settings import settings
 from url_patterns import url_patterns
 
-
 class App(tornado.web.Application):
     def __init__(self, urls):
         self.logger = logging.getLogger(self.__class__.__name__)
