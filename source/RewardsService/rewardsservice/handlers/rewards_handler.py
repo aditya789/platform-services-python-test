@@ -1,6 +1,5 @@
 import json
 import tornado.web
-import motor
 from pymongo import MongoClient
 from tornado.gen import coroutine
 
